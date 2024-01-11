@@ -6,6 +6,7 @@ declare global {
       COMMENTS_URL: string
       QUERY_SERVICE_URL: string
       EVENT_BUS_URL: string
+      MODERATION_URL: string
     }
   }
 }
