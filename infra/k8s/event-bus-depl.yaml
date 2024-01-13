@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus
+  template:
+    metadata:
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - name: event-bus
+          image: ccrane91/event-bus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # the name of this service
+  name: event-bus-srv
+spec:
+  selector:
+    # will manage the event-bus nodes
+    app: event-bus
+  # and expose an internal ClusterIP to communicate with them
+  type: ClusterIP
+  # at this port
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 4005
+      targetPort: 4005

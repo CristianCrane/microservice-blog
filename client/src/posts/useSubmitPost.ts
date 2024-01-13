@@ -8,7 +8,8 @@ export const useSubmitPost = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (payload: PostBody) => axios.post(`${POST_URL}/posts`, payload),
+    mutationFn: (payload: PostBody) =>
+      axios.post(`${POST_URL}/posts/create`, payload),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["posts"] }),
     onError: (error) => alert(`Error creating post: ${error.message}`),
   });

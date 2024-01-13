@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-service-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: query-service
+  template:
+    metadata:
+      labels:
+        app: query-service
+    spec:
+      containers:
+        - name: query-service
+          image: ccrane91/query-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # the name of this service
+  name: query-service-srv
+spec:
+  selector:
+    # will manage the query-service nodes
+    app: query-service
+  # and expose an internal ClusterIP to communicate with them
+  type: ClusterIP
+  # at this port
+  ports:
+    - name: query-service
+      protocol: TCP
+      port: 4002
+      targetPort: 4002

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderation
+  template:
+    metadata:
+      labels:
+        app: moderation
+    spec:
+      containers:
+        - name: moderation
+          image: ccrane91/moderation
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # the name of this service
+  name: moderation-srv
+spec:
+  selector:
+    # will manage the moderation nodes
+    app: moderation
+  # and expose an internal ClusterIP to communicate with them
+  type: ClusterIP
+  # at this port
+  ports:
+    - name: moderation
+      protocol: TCP
+      port: 4003
+      targetPort: 4003
