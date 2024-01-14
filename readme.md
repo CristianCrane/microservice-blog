@@ -27,7 +27,12 @@ Note: The following line was added to the `hosts` file at `C:\Windows\System32\d
 
 # Thoughts to investigate and improve on
 - a lot of duplicated code
+  - solution: build a central library as an npm module to share code between different microservices
 - hard to picture the flow of events between services
+  - solution: precisely define all of our events in shared library
 - hard to remember what properties an event should have
+  - solution: write everything in typescript and share it between all microservices
 - hard to test some event flows
-- hard to test race conditions of events - features depend on assumed sequence of events 
+  - solution: invest more time into automated tests
+- hard to test race conditions of events - features depend on assumed sequence of events
+  - todo: investigate concurrency issues of microservices
