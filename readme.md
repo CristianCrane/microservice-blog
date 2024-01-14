@@ -24,3 +24,10 @@ Note: The following line was added to the `hosts` file at `C:\Windows\System32\d
   - configuration, setup, networking, and deployment of a microservice system on k8s
 - skaffold
   - automating/managing the entire k8s developement lifecycle & multiple microservices automatically
+
+# Thoughts to investigate and improve on
+- a lot of duplicated code
+- hard to picture the flow of events between services
+- hard to remember what properties an event should have
+- hard to test some event flows
+- hard to test race conditions of events - features depend on assumed sequence of events 
