@@ -1,5 +1,10 @@
 # project overview
-this is a small blog application
+a small blog application powered by microservices 
+
+Feature list:
+- create posts
+- create comments
+- automated comment moderation
 
 # quickstart
 all microservices are intended to be ran in k8s.
